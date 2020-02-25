@@ -1,4 +1,6 @@
-package org.wcci.blog;
+package org.wcci.blog.storage;
+
+import org.wcci.blog.models.Genre;
 
 import java.util.Collection;
 

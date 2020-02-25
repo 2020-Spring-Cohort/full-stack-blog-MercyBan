@@ -1,10 +1,14 @@
-package org.wcci.blog;
+package org.wcci.blog.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
-
-import java.awt.print.Book;
+import org.wcci.blog.controllers.PostController;
+import org.wcci.blog.models.Author;
+import org.wcci.blog.models.Genre;
+import org.wcci.blog.models.Hashtag;
+import org.wcci.blog.models.Post;
+import org.wcci.blog.storage.PostStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

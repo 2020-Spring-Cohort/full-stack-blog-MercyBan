@@ -1,8 +1,10 @@
-package org.wcci.blog;
+package org.wcci.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.wcci.blog.storage.GenreStorage;
+import org.wcci.blog.models.Genre;
 
 @Controller
 public class GenreController {

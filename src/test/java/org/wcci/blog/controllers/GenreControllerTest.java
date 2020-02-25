@@ -1,12 +1,11 @@
-package org.wcci.blog;
+package org.wcci.blog.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.ui.Model;
-
-import java.awt.print.Book;
+import org.wcci.blog.controllers.GenreController;
+import org.wcci.blog.models.Genre;
+import org.wcci.blog.storage.GenreStorage;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class GenreControllerTest {
     private GenreController underTest;
