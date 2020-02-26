@@ -6,10 +6,10 @@ import java.util.Collection;
 
 public interface GenreStorage {
 
-    public Collection<Genre> findAllGenres();
+    Collection<Genre> findAllGenres();
 
-    public void store (Genre genre);
+    void store (Genre genre);
 
 
-    public Genre findGenreByType(String genreType);
+    Genre findGenreByName(String name);
 }

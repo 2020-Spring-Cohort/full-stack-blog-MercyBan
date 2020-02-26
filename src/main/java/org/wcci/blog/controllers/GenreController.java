@@ -11,6 +11,7 @@ public class GenreController {
     private GenreStorage genreStorage;
 
     public GenreController(GenreStorage genreStorage) {
+
         this.genreStorage = genreStorage;
     }
 
@@ -22,7 +23,7 @@ public class GenreController {
 
     @GetMapping("/genres/{genreType}")
     public String displaySingleGenre(@PathVariable String genreType, Model model) {
-        Genre retrievedGenre = genreStorage.findGenreByType(genreType);
+        Genre retrievedGenre = genreStorage.findGenreByName(genreType);
         model.addAttribute("genre", retrievedGenre);
 
         return "genreView";

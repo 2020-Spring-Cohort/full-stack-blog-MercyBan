@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Genre {
@@ -12,20 +13,33 @@ public class Genre {
     @GeneratedValue
     private Long id;
     private String name;
-    private String type;
     @OneToMany( mappedBy = "genre")
     private Collection<Post> posts;
 
 
-    public Genre(String type) {
+    public Genre(String name) {
 
-        this.type = type;
+        this.name = name;
     }
     public Genre(){
 
     }
-    public String getType(){
-        return type;
+    public String getName(){
+        return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Genre)) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(id, genre.id) &&
+                Objects.equals(name, genre.name) &&
+                Objects.equals(posts, genre.posts);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, posts);
+    }
 }
