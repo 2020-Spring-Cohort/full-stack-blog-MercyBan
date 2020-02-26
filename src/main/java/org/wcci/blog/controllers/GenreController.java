@@ -18,7 +18,7 @@ public class GenreController {
     @RequestMapping("/genres")
     public String displayGenres(Model model) {
         model.addAttribute("genres", genreStorage.findAllGenres());
-        return "genresView";
+        return "genres-view";
     }
 
     @GetMapping("/genres/{genreType}")
@@ -26,7 +26,7 @@ public class GenreController {
         Genre retrievedGenre = genreStorage.findGenreByName(genreType);
         model.addAttribute("genre", retrievedGenre);
 
-        return "genreView";
+        return "genre-view";
 
     }
     @PostMapping("/add-genre")

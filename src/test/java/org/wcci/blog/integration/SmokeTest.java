@@ -8,7 +8,6 @@ import org.springframework.test.annotation.DirtiesContext;
 @SpringBootTest
 class SmokeTest {
 
-    @SuppressWarnings("EmptyMethod")
     @Test
     void contextLoads(){
 
