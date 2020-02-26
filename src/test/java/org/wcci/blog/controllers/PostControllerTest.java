@@ -2,6 +2,9 @@ package org.wcci.blog.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wcci.blog.controllers.PostController;
 import org.wcci.blog.models.Author;
@@ -11,8 +14,10 @@ import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.PostStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 public class PostControllerTest {
     private PostController underTest;
@@ -26,8 +31,8 @@ public class PostControllerTest {
         underTest = new PostController(mockStorage);
         model = mock(Model.class);
         Genre testGenre = new Genre("Music");
-        Author testAuthor = new Author("anything");
-        Hashtag testHashtag = new Hashtag("anything");
+        Author testAuthor = new Author("Test");
+        Hashtag testHashtag = new Hashtag("Test");
         testPost = new Post("Latest Music", "Test Description", testGenre, testAuthor);
         when(mockStorage.findPostById(1L)).thenReturn(testPost);
 
@@ -39,4 +44,20 @@ public class PostControllerTest {
         assertThat(result).isEqualTo("post-view");
 
     }
+    @Test
+    public void displayPostInteractsWithDependenciesCorrectly() {
+
+        underTest.displayPost(1L, model);
+        verify(mockStorage).findPostById(1L);
+        verify(model).addAttribute("post", testPost);
+    }
+//    @Test
+//    public void displayPostMappingIsCorrect() throws Exception {
+//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+//        mockMvc.perform(MockMvcRequestBuilders.get("/posts/1"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("post-view"))
+//                .andExpect(model().attributeExists("post"))
+//                .andExpect(model().attribute("book", testPost));
+//    }
 }

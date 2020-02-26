@@ -11,5 +11,5 @@ public interface GenreStorage {
     void store (Genre genre);
 
 
-    Genre findGenreByName(String name);
+    Genre findGenreByName(String genreName);
 }

@@ -14,9 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -69,6 +69,24 @@ public class GenreControllerTest {
                 .andExpect(model().attributeExists("genres"))
                 .andExpect(model().attribute("genres", genreCollection));
     }
+    @Test
+    public void addGenreShouldRedirectToGenresEndPoint() {
+        String result = underTest.addGenre("Test");
+        assertThat(result).isEqualTo("redirect:genres");
+    }
+    @Test
+    public void addGenreShouldStoreANewGenre() {
+        underTest.addGenre("Test");
+        verify(genreStorage).store(new Genre("Test"));
+    }
+//    @Test
+//    public void addGenreEndpointShouldAddNewGenre() throws Exception {
+//        mockMvc.perform(post("/add-genre")
+//                .param("name", "Test"))
+//                .andDo(print())
+//                .andExpect(status().is3xxRedirection());
+//        verify(genreStorage).store(new Genre("Test"));
+
 
 
 }
