@@ -16,31 +16,21 @@
 <body class="container">
 <header class="container__header">
     <div class="header__page-title">
-        <p class="site-header-title">Lifestle and Fashion Blog</p>
+        <p class="site-header-title">Lifestyle and Fashion Blog</p>
     </div>
 
     <div class="nav">
         <a href="/">Home</a>
-        <a href="/posts">Posts</a>
-        <a href="/genres">Genres</a>
-        <a href="/authors">Authors</a>
+        <a href="posts">Posts</a>
+        <a href="genres">Genres</a>
+        <a href="authors">Authors</a>
         <a href="hashtags">Hashtags</a>
 
     </div>
     </nav>
 </header>
 </body>
-<p th:each="genre:${genres}" class="genre">
-    <a th:href="@{'genres/' + ${genre.id}}" th:text=" ''+${genre.name} + ''"></a>
-</p>
-</div>
-<div>
-    <form th:action="'/add-genre'" method="POST">
-        <input name="name" type="text">
-        <button type="submit">Add Genre</button>
-    </form>
-</div>
 <body>
-
+    <h1 th:text="${author.name}"></h1>
 </body>
 </html>

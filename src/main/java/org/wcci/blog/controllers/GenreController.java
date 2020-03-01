@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.storage.GenreStorage;
 import org.wcci.blog.models.Genre;
 
+import java.util.Optional;
+
 @Controller
 public class GenreController {
     private GenreStorage genreStorage;
@@ -21,17 +23,17 @@ public class GenreController {
         return "genres-view";
     }
 
-    @GetMapping("/genres/{genreType}")
-    public String displaySingleGenre(@PathVariable String genreType, Model model) {
-        Genre retrievedGenre = genreStorage.findGenreByName(genreType);
-        model.addAttribute("genre", retrievedGenre);
+    @GetMapping("/genres/{id}")
+    public String displaySingleGenre(@PathVariable Long id, Model model) {
+        Optional<Genre> retrievedGenre = genreStorage.findGenreById(id);
+        model.addAttribute("genre", retrievedGenre.get());
 
-        return "genre-view";
+        return "genre";
 
     }
     @PostMapping("/add-genre")
-    public String  addGenre(@RequestParam String location) {
-        genreStorage.store(new Genre(location));
+    public String  addGenre(@RequestParam String name) {
+        genreStorage.store(new Genre(name));
         return "redirect:genres";
 
 

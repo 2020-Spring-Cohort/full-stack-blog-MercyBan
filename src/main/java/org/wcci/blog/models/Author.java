@@ -19,15 +19,11 @@ public class Author {
     private Collection<Post> posts;
 
     public Author (){
+    }
+    public Author(String authorName){
+        this.name = authorName;
 
     }
-
-    public Author(String name){
-        this.name = name;
-
-
-    }
-
     public Long getId() {
         return id;
     }

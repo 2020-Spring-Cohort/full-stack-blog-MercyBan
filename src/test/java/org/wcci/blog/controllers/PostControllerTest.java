@@ -46,18 +46,18 @@ public class PostControllerTest {
     }
     @Test
     public void displayPostInteractsWithDependenciesCorrectly() {
-
-        underTest.displayPost(1L, model);
-        verify(mockStorage).findPostById(1L);
+        long id = 1L;
+        underTest.displayPost(id, model);
+        verify(mockStorage).findPostById(1);
         verify(model).addAttribute("post", testPost);
     }
-//    @Test
-//    public void displayPostMappingIsCorrect() throws Exception {
-//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
-//        mockMvc.perform(MockMvcRequestBuilders.get("/posts/1"))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("post-view"))
-//                .andExpect(model().attributeExists("post"))
-//                .andExpect(model().attribute("book", testPost));
-//    }
+    @Test
+    public void displayPostMappingIsCorrect() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/posts/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("post-view"))
+                .andExpect(model().attributeExists("post"))
+                .andExpect(model().attribute("post", testPost));
+    }
 }

@@ -1,0 +1,12 @@
+
+.nav:hover{
+    background-color: lightgreen;
+}
+
+body {
+    background-image: url("https://cms.qz.com/wp-content/uploads/2018/10/Untitled-1.jpg?quality=75&strip=all&w=1600&h=900&crop=1");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-y: auto;
+}

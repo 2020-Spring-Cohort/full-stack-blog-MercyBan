@@ -18,6 +18,8 @@ public class Post {
     private Date publishDate;
     @ManyToMany
     private Collection<Hashtag> hashtags;
+    @OneToMany
+    private Collection<Author> authors;
 
     public Post( String title, String postBody, Genre genre, Author author) {
 
@@ -26,9 +28,22 @@ public class Post {
         this.author = author;
         this.genre = genre;
     }
+
+    public Post( String title, String postBody, Genre genre, Author author, Collection<Hashtag> hashtags) {
+
+        this.title = title;
+        this.postBody = postBody;
+        this.author = author;
+        this.genre = genre;
+        this.hashtags = hashtags;
+    }
+
     public Post (){
     }
 
+    public Collection<Author> getAuthors() {
+        return authors;
+    }
 
     @Override
     public int hashCode() {

@@ -41,8 +41,8 @@ public class GenreControllerTest {
 
     @Test
     public void shouldReturnViewNamedGenreViewWhenDisplaySingleGenreIsCalled() {
-        String viewName = underTest.displaySingleGenre("", mockModel);
-        assertThat(viewName).isEqualTo("genreView");
+        String viewName = underTest.displaySingleGenre(1L, mockModel);
+        assertThat(viewName).isEqualTo("genre");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class GenreControllerTest {
         when(genreStorage.findGenreByName("TEST")).thenReturn(testGenre);
         mockMvc.perform(get("/genres/TEST"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("genreView"))
+                .andExpect(view().name("genre-view"))
                 .andExpect(model().attributeExists("genre"))
                 .andExpect(model().attribute("genre", testGenre));
     }
@@ -65,30 +65,33 @@ public class GenreControllerTest {
         mockMvc.perform(get("/genres"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("genresView"))
+                .andExpect(view().name("genres-view"))
                 .andExpect(model().attributeExists("genres"))
                 .andExpect(model().attribute("genres", genreCollection));
     }
+
     @Test
     public void addGenreShouldRedirectToGenresEndPoint() {
         String result = underTest.addGenre("Test");
         assertThat(result).isEqualTo("redirect:genres");
     }
+
     @Test
     public void addGenreShouldStoreANewGenre() {
         underTest.addGenre("Test");
         verify(genreStorage).store(new Genre("Test"));
     }
-//    @Test
-//    public void addGenreEndpointShouldAddNewGenre() throws Exception {
-//        mockMvc.perform(post("/add-genre")
-//                .param("name", "Test"))
-//                .andDo(print())
-//                .andExpect(status().is3xxRedirection());
-//        verify(genreStorage).store(new Genre("Test"));
+
+    @Test
+    public void addGenreEndpointShouldAddNewGenre() throws Exception {
+        mockMvc.perform(post("/add-genre")
+                .param("name", "Test"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+        verify(genreStorage).store(new Genre("Test"));
 
 
-
+    }
 }
 
 

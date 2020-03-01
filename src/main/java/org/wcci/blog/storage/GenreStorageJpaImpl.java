@@ -6,6 +6,7 @@ import org.wcci.blog.models.Genre;
 import org.wcci.blog.storage.repositories.GenreRepository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class GenreStorageJpaImpl implements GenreStorage {
@@ -30,6 +31,11 @@ public class GenreStorageJpaImpl implements GenreStorage {
 
     @Override
     public Genre findGenreByName(String genreName) {
-        return genreRepository.findByType(genreName).get();
+        return genreRepository.findByName(genreName).get();
+    }
+
+    @Override
+    public Optional<Genre> findGenreById(Long id) {
+        return genreRepository.findById(id);
     }
 }

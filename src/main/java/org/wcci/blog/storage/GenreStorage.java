@@ -3,6 +3,7 @@ package org.wcci.blog.storage;
 import org.wcci.blog.models.Genre;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public interface GenreStorage {
 
@@ -10,6 +11,7 @@ public interface GenreStorage {
 
     void store (Genre genre);
 
+    Genre findGenreByName(String name);
 
-    Genre findGenreByName(String genreName);
+    Optional<Genre> findGenreById(Long id);
 }

@@ -21,15 +21,15 @@ public class HttpRequestTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-//    @Autowired
-//    private GenreStorage genreStorage;
-//    private Genre testGenre;
-//
-//    @BeforeEach
-//    public void testClassSetup() {
-//        testGenre = new Genre("HTTP Request Test Genre");
-//        genreStorage.store(testGenre);
-//    }
+    @Autowired
+    private GenreStorage genreStorage;
+    private Genre testGenre;
+
+    @BeforeEach
+    public void testClassSetup() {
+        testGenre = new Genre("HTTP Request Test Genre");
+        genreStorage.store(testGenre);
+    }
     @Test
     public void genresEndPointReturnsOK() {
         ResponseEntity<String> response = testRestTemplate.getForEntity(
@@ -37,10 +37,10 @@ public class HttpRequestTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
-//    @Test
-//    public void specificEndPointReturnsOK() {
-//        ResponseEntity<String> response = testRestTemplate.getForEntity(
-//                "http://localhost:" + port + "/genres/" + testGenre.getName(), String.class);
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//    }
+    @Test
+    public void specificEndPointReturnsOK() {
+        ResponseEntity<String> response = testRestTemplate.getForEntity(
+                "http://localhost:" + port + "/genres/" + testGenre.getName(), String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
 }

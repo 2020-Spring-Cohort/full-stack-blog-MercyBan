@@ -5,19 +5,37 @@ import org.springframework.stereotype.Service;
 import org.wcci.blog.models.Author;
 import org.wcci.blog.storage.repositories.AuthorRepository;
 
+import java.util.Collection;
+import java.util.Optional;
+
 @Service
 public class AuthorStorageJpaImpl implements AuthorStorage {
-    private final AuthorRepository authorRepository;
+   AuthorRepository repository;
 
-    public AuthorStorageJpaImpl(AuthorRepository authorRepository) {
+   public AuthorStorageJpaImpl (AuthorRepository repository) {
+       this.repository = repository;
+   }
 
-        this.authorRepository = authorRepository;
+
+    @Override
+    public Collection<Author> getAll() {
+       return (Collection<Author>) repository.findAll();
     }
 
     @Override
-    public void store(Author authorToStore) {
+    public void store(Author author) {
 
-        authorRepository.save(authorToStore);
+        repository.save(author);
+    }
+
+    @Override
+    public Author findAuthorByName(String name) {
+        return repository.findByName(name).get();
+    }
+
+    @Override
+    public Optional<Author> findAuthorById(Long authorId) {
+        return repository.findById(authorId);
     }
 }
 

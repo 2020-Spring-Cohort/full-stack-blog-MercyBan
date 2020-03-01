@@ -1,0 +1,35 @@
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex: 0 1 40px;
+
+}
+.nav a {
+    color: black;
+    padding: 10px;
+}
+.welcome_text{
+
+    display: grid;
+    grid-area: 2;
+    justify-content: center;
+    align-self: center;
+
+
+}
+.container{
+    display: grid;
+    grid-template-rows: 200px 200px 200px;
+
+
+
+
+}
+
+
+
+
+
+
+

@@ -14,12 +14,28 @@ public class Hashtag {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToMany(mappedBy = "hashtag")
+    @ManyToMany(mappedBy = "hashtags")
     private Collection<Post> posts;
 
-    public Hashtag(String anything) {
+    public Hashtag() {
 
-        this.hashtag = anything;
+    }
+
+    public Hashtag(String hashtag) {
+
+        this.hashtag = hashtag;
+    }
+
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Collection<Post> getPosts() {
+        return posts;
     }
 
     @Override

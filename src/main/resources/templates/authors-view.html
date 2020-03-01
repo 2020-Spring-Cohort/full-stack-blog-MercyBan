@@ -21,26 +21,25 @@
 
     <div class="nav">
         <a href="/">Home</a>
-        <a href="/posts">Posts</a>
-        <a href="/genres">Genres</a>
-        <a href="/authors">Authors</a>
+        <a href="posts">Posts</a>
+        <a href="genres">Genres</a>
+        <a href="authors">Authors</a>
         <a href="hashtags">Hashtags</a>
 
     </div>
     </nav>
 </header>
 </body>
-<p th:each="genre:${genres}" class="genre">
-    <a th:href="@{'genres/' + ${genre.id}}" th:text=" ''+${genre.name} + ''"></a>
-</p>
-</div>
-<div>
-    <form th:action="'/add-genre'" method="POST">
-        <input name="name" type="text">
-        <button type="submit">Add Genre</button>
-    </form>
-</div>
-<body>
-
+    <div>
+        <p th:each="author:${authors}" class="author">
+            <a th:href="@{'/' + ${author.id}}" th:text=" ''+${author.name} + ''"></a>
+        </p>
+    </div>
+    <div>
+        <form th:action="'/add-author'" method="POST">
+            <input name="authorName" type="text">
+            <button type="submit">Add Author</button>
+        </form>
+    </div>
 </body>
 </html>
