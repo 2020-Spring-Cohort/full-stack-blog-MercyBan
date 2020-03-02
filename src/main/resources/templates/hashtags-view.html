@@ -16,7 +16,7 @@
 <body class="container">
 <header class="container__header">
     <div class="header__page-title">
-        <p class="site-header-title">Lifestle and Fashion Blog</p>
+        <p class="site-header-title">Lifestyle and Fashion Blog</p>
     </div>
 
     <div class="nav">
@@ -31,8 +31,9 @@
 </header>
 </body>
 <div class="list">
+    <h1>Hashtags</h1>
     <p th:each="hashtag:${hashtags}" class="hashtag">
-        <a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text=" ''+${hashtag.hashtag} + ''"></a>
+        <a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text=" '#' +${hashtag.hashtag} + ''"></a>
     </p>
 </div>
 <div>

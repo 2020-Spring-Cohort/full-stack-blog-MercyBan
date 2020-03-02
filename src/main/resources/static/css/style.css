@@ -1,6 +1,6 @@
 
 .nav:hover{
-    background-color: lightgreen;
+    background-color: darksalmon;
 }
 
 body {
@@ -9,4 +9,19 @@ body {
     background-size: cover;
     position: relative;
     overflow-y: auto;
+}
+.welcome__text{
+    font-family: "Script MT Bold";
+    font-size: large;
+
+}
+.welcome__text:hover {
+    background-color: cornsilk;
+
+}
+.hashtag {
+    font-style: italic;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    margin: 0 2px;
 }
