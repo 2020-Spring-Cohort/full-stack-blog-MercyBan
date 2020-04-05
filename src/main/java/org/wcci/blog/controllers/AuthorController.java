@@ -28,7 +28,7 @@ public class AuthorController {
         return "authors-view";
     }
 
-    @RequestMapping("/{authorId}")
+    @RequestMapping("/author/{authorId}")
     public String displaySingleAuthor(@PathVariable Long authorId, Model model) {
         Optional<Author> retrievedAuthor = authorStorage.findAuthorById(authorId);
         model.addAttribute("author", retrievedAuthor.get());

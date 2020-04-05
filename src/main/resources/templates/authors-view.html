@@ -32,7 +32,7 @@
 </body>
     <div>
         <p th:each="author:${authors}" class="author">
-            <a th:href="@{'/' + ${author.id}}" th:text=" ''+${author.name} + ''"></a>
+            <a th:href="@{'/author/' + ${author.id}}" th:text=" ''+${author.name} + ''"></a>
         </p>
     </div>
     <div>

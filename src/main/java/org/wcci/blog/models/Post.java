@@ -7,14 +7,20 @@ import java.util.Objects;
 
 @Entity
 public class Post {
-    private String title;
-    private String postBody;
-    @ManyToOne
-    private Author author;
-    @ManyToOne
-    private Genre genre;
     @Id
     @GeneratedValue
+    private Long id;
+
+    private String title;
+
+    private String postBody;
+
+    @ManyToOne
+    private Author author;
+
+    @ManyToOne
+    private Genre genre;
+
     private Date publishDate;
     @ManyToMany
     private Collection<Hashtag> hashtags;
@@ -88,6 +94,7 @@ public class Post {
         return hashtags;
     }
 
-
-
+    public Long getId() {
+        return id;
+    }
 }

@@ -39,7 +39,7 @@
 </div>
 <div>
     <p th:each="post:${posts}" class="post">
-        <a th:href="@{'/' + ${post.title}}" th:text=" ''+${post.title} + ''"></a>
+        <a th:href="@{'/post/' + ${post.id}}" th:text=" ''+${post.title} + ''"></a>
     </p>
 </div>
 

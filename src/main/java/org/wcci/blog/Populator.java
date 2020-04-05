@@ -12,6 +12,7 @@ import org.wcci.blog.storage.GenreStorage;
 import org.wcci.blog.storage.HashtagStorage;
 import org.wcci.blog.storage.PostStorage;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -33,34 +34,37 @@ public class Populator implements CommandLineRunner {
     public void run(String...args) {
         Author author1 = new Author("Mercy");
         Author author2 = new Author("Mikaila");
-//        Author author3 = new Author("Roselyn");
+        Author author3 = new Author("Roselyn");
 
 
         Genre genre1 = new Genre("Fashion");
         Genre genre2 = new Genre("Cooking");
-//        Genre genre3 = new Genre("Travel");
+        Genre genre3 = new Genre("Travel");
 
 
         Hashtag hashtag1 = new Hashtag("HappyLife");
         Hashtag hashtag2 = new Hashtag("FeelingGood");
-//        Hashtag hashtag3 = new Hashtag("Friendship");
+        Hashtag hashtag3 = new Hashtag("Friendship");
 
+        ArrayList<Hashtag> hashtagList = new ArrayList<>();
+        hashtagList.add(hashtag1);
+        hashtagList.add(hashtag2);
 
-
-//        Post post1 = new Post("The first post", "Post body", genre1, author1, Collections.emptyList());
-//        Post post2 = new Post("The second post", "Post body", genre2, author2, Collections.emptyList());
-//        postStorage.store(post1);
-//        postStorage.store(post2);
+        Post post1 = new Post("The first post", "Post body", genre1, author1, hashtagList);
+        Post post2 = new Post("The second post", "Post body", genre2, author2, hashtagList);
 
         hashtagStorage.store(hashtag1);
         hashtagStorage.store(hashtag2);
-//        hashtagStorage.store(hashtag3);
+        hashtagStorage.store(hashtag3);
         genreStorage.store(genre1);
         genreStorage.store(genre2);
-//        genreStorage.store(genre3);
+        genreStorage.store(genre3);
         authorStorage.store(author1);
         authorStorage.store(author2);
-//        authorStorage.store(author3);
+        authorStorage.store(author3);
+
+        postStorage.store(post1);
+        postStorage.store(post2);
 
 
     }
